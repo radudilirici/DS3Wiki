@@ -178,10 +178,6 @@
     <Compile Include="Migrations\202101091126137_InitialCreate.Designer.cs">
       <DependentUpon>202101091126137_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202101091527222_NewTable_Weapons.cs" />
-    <Compile Include="Migrations\202101091527222_NewTable_Weapons.Designer.cs">
-      <DependentUpon>202101091527222_NewTable_Weapons.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -213,6 +209,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="favicon.ico" />
+    <Content Include="Scripts\my-scripts.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -247,6 +244,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\Lore.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -267,9 +265,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202101091126137_InitialCreate.resx">
       <DependentUpon>202101091126137_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202101091527222_NewTable_Weapons.resx">
-      <DependentUpon>202101091527222_NewTable_Weapons.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

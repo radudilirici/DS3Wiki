@@ -13,6 +13,11 @@ namespace DS3Wiki.Controllers
             return View();
         }
 
+        public ActionResult Lore()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

@@ -1,0 +1,17 @@
+﻿@model DS3Wiki.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "User Details";
+}
+
+<h2>User Details</h2>
+
+<hr />
+
+@Html.LabelFor(x => x.Email)
+<p>@Model.Email</p>
+
+<br />
+
+<label>Role</label>
+<p>@ViewBag.roleName</p>

@@ -18,22 +18,21 @@
     <button class="btn btn-info">Details</button>
 }
 
+
 @if (User.IsInRole("Contributor") || User.IsInRole("Admin"))
 {
-    <br />
 
-    using (Html.BeginForm(actionName: "Update",
+    using (Html.BeginForm(actionName: "Edit",
         controllerName: "Weapons",
         method: FormMethod.Get,
         routeValues: new { id = Model.Id }))
     {
-        <button class="btn btn-warning">Update</button>
+        <button class="btn btn-warning">Edit</button>
     }
 }
 
 @if (User.IsInRole("Contributor") || User.IsInRole("Admin"))
 {
-    <br />
 
     using (Html.BeginForm(actionName: "Delete",
         controllerName: "Weapons",

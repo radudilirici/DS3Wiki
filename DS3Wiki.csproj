@@ -210,6 +210,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\WeaponArtsController.cs" />
     <Compile Include="Controllers\WeaponsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -235,6 +236,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Models\Weapon.cs" />
     <Compile Include="Models\WeaponArt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -303,11 +305,15 @@
     <Content Include="Views\Weapons\Create.cshtml" />
     <Content Include="Views\Weapons\Details.cshtml" />
     <Content Include="Views\Weapons\_WeaponsListItem.cshtml" />
-    <Content Include="Views\Weapons\Update.cshtml" />
+    <Content Include="Views\Weapons\Edit.cshtml" />
     <Content Include="Views\WeaponArts\Index.cshtml" />
     <Content Include="Views\WeaponArts\_WeaponArtsListItem.cshtml" />
     <Content Include="Views\WeaponArts\Create.cshtml" />
-    <Content Include="Views\WeaponArts\Update.cshtml" />
+    <Content Include="Views\WeaponArts\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\_UsersListItem.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

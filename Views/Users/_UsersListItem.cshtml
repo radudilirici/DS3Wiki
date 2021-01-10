@@ -1,0 +1,26 @@
+﻿@model DS3Wiki.Models.ApplicationUser
+
+<hr />
+
+@Html.Label("Email", "Email: ")
+<p>@Model.Email</p>
+
+
+<br />
+
+@using (Html.BeginForm(actionName: "Details",
+    controllerName: "Users",
+    method: FormMethod.Get,
+    routeValues: new { id = Model.Id }))
+{
+    <button class="btn btn-info">Details</button>
+}
+
+
+@using (Html.BeginForm(actionName: "Edit",
+    controllerName: "Users",
+    method: FormMethod.Get,
+    routeValues: new { id = Model.Id }))
+{
+    <button class="btn btn-warning">Edit</button>
+}

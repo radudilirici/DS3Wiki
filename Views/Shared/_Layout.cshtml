@@ -28,6 +28,10 @@
                     {
                         <li>@Html.ActionLink("Weapon Arts", "Index", "WeaponArts")</li>
                     }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Users", "Index", "Users")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

@@ -1,0 +1,15 @@
+﻿@model List<DS3Wiki.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<h2>Users</h2>
+
+@{
+    foreach (var user in Model)
+    {
+        @Html.Partial("_UsersListItem", user)
+    }
+}
+

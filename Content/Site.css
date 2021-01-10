@@ -44,3 +44,7 @@ textarea {
     padding: 15px;
     border-radius: 4px;
 }
+
+form {
+    display: inline;
+}

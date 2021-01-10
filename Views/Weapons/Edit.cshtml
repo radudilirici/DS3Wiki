@@ -1,12 +1,12 @@
 ﻿@model DS3Wiki.Models.Weapon
 
 @{
-    ViewBag.Title = "Update Weapon";
+    ViewBag.Title = "Edit Weapon";
 }
 
-<h2>Update Weapon Information</h2>
+<h2>Edit Weapon Information</h2>
 
-<br />
+<hr />
 
 @using (Html.BeginForm())
 {
@@ -26,6 +26,14 @@
             @Html.LabelFor(x => x.Description, new { @class = "control-label col-md-4" })
             <div class="col-md-8">
                 @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.WeaponArt, new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.DropDownListFor(x => x.WeaponArtId, (SelectList)ViewBag.WeaponArts, "-Select a weapon art-", new { @class = "form-control" })
                 @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
             </div>
         </div>

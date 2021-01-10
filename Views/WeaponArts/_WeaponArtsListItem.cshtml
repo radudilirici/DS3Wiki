@@ -10,15 +10,13 @@
 
 <br />
 
-@using (Html.BeginForm(actionName: "Update",
+@using (Html.BeginForm(actionName: "Edit",
     controllerName: "WeaponArts",
     method: FormMethod.Get,
     routeValues: new { id = Model.Id }))
 {
-    <button class="btn btn-warning">Update</button>
+    <button class="btn btn-warning">Edit</button>
 }
-
-<br />
 
 @using (Html.BeginForm(actionName: "Delete",
     controllerName: "WeaponArts",

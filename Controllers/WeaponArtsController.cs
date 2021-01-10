@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace DS3Wiki.Controllers
 {
-    [Authorize(Roles = "Admin Contributor")]
+    [Authorize(Roles = "Admin,Contributor")]
     public class WeaponArtsController : Controller
     {
         private readonly WikiContext wikiContext = new WikiContext();
@@ -58,7 +58,7 @@ namespace DS3Wiki.Controllers
             return View();
         }
 
-        public ActionResult Update(int id)
+        public ActionResult Edit(int id)
         {
             var weaponArt = wikiContext.WeaponArts.Find(id);
 
@@ -71,7 +71,7 @@ namespace DS3Wiki.Controllers
         }
 
         [HttpPost]
-        public ActionResult update(WeaponArt weaponArt)
+        public ActionResult Edit(WeaponArt weaponArt)
         {
             try
             {

@@ -42,8 +42,6 @@ namespace DS3Wiki.Controllers
 
             ViewBag.WeaponArts = new SelectList(weaponArts, "WeaponArtId", "WeaponArtName");
 
-            Console.WriteLine(weaponArts[0]);
-
             return View();
         }
 
@@ -68,7 +66,7 @@ namespace DS3Wiki.Controllers
             return View();
         }
 
-        public ActionResult Update(int id)
+        public ActionResult Edit(int id)
         {
             var weapon = wikiContext.Weapons.Find(id);
 
@@ -77,11 +75,19 @@ namespace DS3Wiki.Controllers
                 return HttpNotFound();
             }
 
+            var weaponArts = wikiContext.WeaponArts.Select(x => new
+            {
+                WeaponArtId = x.Id,
+                WeaponArtName = x.Name
+            }).ToList();
+
+            ViewBag.WeaponArts = new SelectList(weaponArts, "WeaponArtId", "WeaponArtName");
+
             return View(weapon);
         }
 
         [HttpPost]
-        public ActionResult update(Weapon weapon)
+        public ActionResult Edit(Weapon weapon)
         {
             try
             {
@@ -96,6 +102,7 @@ namespace DS3Wiki.Controllers
 
                     oldWeapon.Name = weapon.Name;
                     oldWeapon.Description = weapon.Description;
+                    oldWeapon.WeaponArtId = weapon.WeaponArtId;
 
                     TryUpdateModel(oldWeapon);
                     wikiContext.SaveChanges();

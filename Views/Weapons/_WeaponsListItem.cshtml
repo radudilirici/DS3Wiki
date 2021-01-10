@@ -18,22 +18,28 @@
     <button class="btn btn-info">Details</button>
 }
 
-<br />
-
-@using (Html.BeginForm(actionName: "Update",
-    controllerName: "Weapons",
-    method: FormMethod.Get,
-    routeValues: new { id = Model.Id }))
+@if (User.IsInRole("Contributor") || User.IsInRole("Admin"))
 {
-    <button class="btn btn-warning">Update</button>
+    <br />
+
+    using (Html.BeginForm(actionName: "Update",
+        controllerName: "Weapons",
+        method: FormMethod.Get,
+        routeValues: new { id = Model.Id }))
+    {
+        <button class="btn btn-warning">Update</button>
+    }
 }
 
-<br />
-
-@using (Html.BeginForm(actionName: "Delete",
-    controllerName: "Weapons",
-    method: FormMethod.Post,
-    routeValues: new { id = Model.Id }))
+@if (User.IsInRole("Contributor") || User.IsInRole("Admin"))
 {
-    <button class="btn btn-danger">Delete</button>
+    <br />
+
+    using (Html.BeginForm(actionName: "Delete",
+        controllerName: "Weapons",
+        method: FormMethod.Post,
+        routeValues: new { id = Model.Id }))
+    {
+        <button class="btn btn-danger">Delete</button>
+    }
 }

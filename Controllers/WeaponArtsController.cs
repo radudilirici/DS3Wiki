@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace DS3Wiki.Controllers
 {
+    [Authorize(Roles = "Admin Contributor")]
     public class WeaponArtsController : Controller
     {
         private readonly WikiContext wikiContext = new WikiContext();

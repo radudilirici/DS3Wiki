@@ -15,5 +15,7 @@ namespace DbTest.Contexts
         }
 
         public DbSet<Weapon> Weapons { get; set; }
+
+        public DbSet<WeaponArt> WeaponArts { get; set; }
     }
 }

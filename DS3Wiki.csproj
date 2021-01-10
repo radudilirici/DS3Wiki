@@ -210,6 +210,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\WeaponArtsController.cs" />
     <Compile Include="Controllers\WeaponsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -222,11 +223,20 @@
     <Compile Include="Migrations\202101101451157_NewTable_Weapons.designer.cs">
       <DependentUpon>202101101451157_NewTable_Weapons.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101101627555_NewTable_WeaponArts.cs" />
+    <Compile Include="Migrations\202101101627555_NewTable_WeaponArts.designer.cs">
+      <DependentUpon>202101101627555_NewTable_WeaponArts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101101650382_Make_Weapons_Description_Required.cs" />
+    <Compile Include="Migrations\202101101650382_Make_Weapons_Description_Required.designer.cs">
+      <DependentUpon>202101101650382_Make_Weapons_Description_Required.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Weapon.cs" />
+    <Compile Include="Models\WeaponArt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -294,6 +304,10 @@
     <Content Include="Views\Weapons\Details.cshtml" />
     <Content Include="Views\Weapons\_WeaponsListItem.cshtml" />
     <Content Include="Views\Weapons\Update.cshtml" />
+    <Content Include="Views\WeaponArts\Index.cshtml" />
+    <Content Include="Views\WeaponArts\_WeaponArtsListItem.cshtml" />
+    <Content Include="Views\WeaponArts\Create.cshtml" />
+    <Content Include="Views\WeaponArts\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -317,6 +331,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101101451157_NewTable_Weapons.resx">
       <DependentUpon>202101101451157_NewTable_Weapons.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101101627555_NewTable_WeaponArts.resx">
+      <DependentUpon>202101101627555_NewTable_WeaponArts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101101650382_Make_Weapons_Description_Required.resx">
+      <DependentUpon>202101101650382_Make_Weapons_Description_Required.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

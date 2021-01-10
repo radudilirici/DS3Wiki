@@ -1,0 +1,29 @@
+﻿@model DS3Wiki.Models.WeaponArt
+
+<hr />
+
+@Html.Label("Name", "Name: ")
+<p>@Model.Name</p>
+
+@Html.Label("Description", "Description: ")
+<p>@Model.Description</p>
+
+<br />
+
+@using (Html.BeginForm(actionName: "Update",
+    controllerName: "WeaponArts",
+    method: FormMethod.Get,
+    routeValues: new { id = Model.Id }))
+{
+    <button class="btn btn-warning">Update</button>
+}
+
+<br />
+
+@using (Html.BeginForm(actionName: "Delete",
+    controllerName: "WeaponArts",
+    method: FormMethod.Post,
+    routeValues: new { id = Model.Id }))
+{
+    <button class="btn btn-danger">Delete</button>
+}

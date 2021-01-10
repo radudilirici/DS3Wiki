@@ -8,53 +8,42 @@ using System.Web.Mvc;
 
 namespace DS3Wiki.Controllers
 {
-    public class WeaponsController : Controller
+    public class WeaponArtsController : Controller
     {
         private readonly WikiContext wikiContext = new WikiContext();
 
-        // GET: Weapons
         public ActionResult Index()
         {
-            var weapons = wikiContext.Weapons.ToList();
+            var weaponArts = wikiContext.WeaponArts.ToList();
 
-            return View(weapons);
+            return View(weaponArts);
         }
 
         public ActionResult Details(int id)
         {
-            var weapon = wikiContext.Weapons.Include("WeaponArt").FirstOrDefault(x => x.Id == id);
-            
-            if (weapon == null)
+            var weaponArt = wikiContext.WeaponArts.Find(id);
+
+            if (weaponArt == null)
             {
                 return HttpNotFound();
             }
 
-            return View(weapon);
+            return View(weaponArt);
         }
 
         public ActionResult Create()
         {
-            var weaponArts = wikiContext.WeaponArts.Select(x => new
-            {
-                WeaponArtId = x.Id,
-                WeaponArtName = x.Name
-            }).ToList();
-
-            ViewBag.WeaponArts = new SelectList(weaponArts, "WeaponArtId", "WeaponArtName");
-
-            Console.WriteLine(weaponArts[0]);
-
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(Weapon weapon)
+        public ActionResult Create(WeaponArt weaponArt)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    wikiContext.Weapons.Add(weapon);
+                    wikiContext.WeaponArts.Add(weaponArt);
                     wikiContext.SaveChanges();
 
                     return RedirectToAction("Index");
@@ -70,34 +59,34 @@ namespace DS3Wiki.Controllers
 
         public ActionResult Update(int id)
         {
-            var weapon = wikiContext.Weapons.Find(id);
+            var weaponArt = wikiContext.WeaponArts.Find(id);
 
-            if (weapon == null)
+            if (weaponArt == null)
             {
                 return HttpNotFound();
             }
 
-            return View(weapon);
+            return View(weaponArt);
         }
 
         [HttpPost]
-        public ActionResult update(Weapon weapon)
+        public ActionResult update(WeaponArt weaponArt)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var oldWeapon = wikiContext.Weapons.Find(weapon.Id);
+                    var oldWeaponArt = wikiContext.WeaponArts.Find(weaponArt.Id);
 
-                    if (oldWeapon == null)
+                    if (oldWeaponArt == null)
                     {
                         return HttpNotFound();
                     }
 
-                    oldWeapon.Name = weapon.Name;
-                    oldWeapon.Description = weapon.Description;
+                    oldWeaponArt.Name = weaponArt.Name;
+                    oldWeaponArt.Description = weaponArt.Description;
 
-                    TryUpdateModel(oldWeapon);
+                    TryUpdateModel(oldWeaponArt);
                     wikiContext.SaveChanges();
 
                     return RedirectToAction("Index");
@@ -114,14 +103,14 @@ namespace DS3Wiki.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            var weapon = wikiContext.Weapons.Find(id);
+            var weaponArt = wikiContext.WeaponArts.Find(id);
 
-            if (weapon == null)
+            if (weaponArt == null)
             {
                 return HttpNotFound();
             }
 
-            wikiContext.Weapons.Remove(weapon);
+            wikiContext.WeaponArts.Remove(weaponArt);
             wikiContext.SaveChanges();
 
             return RedirectToAction("Index");

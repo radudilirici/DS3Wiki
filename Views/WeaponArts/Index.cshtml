@@ -1,0 +1,24 @@
+﻿@model List<DS3Wiki.Models.WeaponArt>
+
+@{
+    ViewBag.Title = "Weapon Arts";
+}
+
+<h2>Weapon Arts</h2>
+
+<br />
+
+@using (Html.BeginForm(actionName: "Create",
+    controllerName: "WeaponArts",
+    method: FormMethod.Get))
+{
+    <button class="btn btn-success">Add Weapon Art</button>
+}
+
+@{
+    foreach (var weaponArt in Model)
+    {
+        @Html.Partial("_WeaponArtsListItem", weaponArt)
+    }
+}
+

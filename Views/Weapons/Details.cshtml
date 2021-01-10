@@ -1,0 +1,19 @@
+﻿@model DS3Wiki.Models.Weapon
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Weapon Details</h2>
+
+@Html.LabelFor(x => x.Name)
+<p>@Model.Name</p>
+
+@Html.LabelFor(x => x.Description)
+<p>@Model.Description</p>
+
+<br />
+
+<p>This weapon uses the --- as Weapon Art.</p>
+
+<p>It can be dropped from ....</p>

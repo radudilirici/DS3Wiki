@@ -1,23 +1,22 @@
-namespace DS3Wiki.Migrations
+﻿namespace DS3Wiki.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<DS3Wiki.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DbTest.Contexts.WikiContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "DS3Wiki.Models.ApplicationDbContext";
         }
 
-        protected override void Seed(DS3Wiki.Models.ApplicationDbContext context)
+        protected override void Seed(DbTest.Contexts.WikiContext context)
         {
             //  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
         }
     }

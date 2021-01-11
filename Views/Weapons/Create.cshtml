@@ -8,6 +8,16 @@
 
 <hr />
 
+@using (Html.BeginForm(actionName: "Index",
+    controllerName: "Weapons",
+    method: FormMethod.Get))
+{
+    <button class="btn btn-warning">← List</button>
+}
+
+<br />
+<br />
+
 @using (Html.BeginForm())
 {
     <div class="form-horizontal">

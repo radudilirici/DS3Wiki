@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace DS3Wiki.Controllers
 {
@@ -22,7 +23,7 @@ namespace DS3Wiki.Controllers
 
         public ActionResult Details(int id)
         {
-            var weapon = wikiContext.Weapons.Include("WeaponArt").FirstOrDefault(x => x.Id == id);
+            Weapon weapon = wikiContext.Weapons.Include(x => x.Enemies).Include("WeaponArt").FirstOrDefault(x => x.Id == id);
             
             if (weapon == null)
             {

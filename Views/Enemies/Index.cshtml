@@ -1,0 +1,26 @@
+﻿@model List<DS3Wiki.Models.Enemy>
+
+@{
+    ViewBag.Title = "Enemies";
+}
+
+<h2>Enemies</h2>
+
+@if (User.IsInRole("Contributor") || User.IsInRole("Admin"))
+{
+    <br />
+
+    using (Html.BeginForm(actionName: "Create",
+        controllerName: "Enemies",
+        method: FormMethod.Get))
+    {
+        <button class="btn btn-success">Add Enemy</button>
+    }
+}
+
+@{
+    foreach (var enemy in Model)
+    {
+        @Html.Partial("_EnemiesListItem", enemy)
+    }
+}

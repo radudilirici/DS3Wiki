@@ -1,15 +1,15 @@
-﻿@model DS3Wiki.Models.Weapon
+﻿@model DS3Wiki.Models.Enemy
 
 @{
-    ViewBag.Title = "Edit Weapon";
+    ViewBag.Title = "Add Enemy";
 }
 
-<h2>Edit Weapon Information</h2>
+<h2>Add Enemy</h2>
 
 <hr />
 
 @using (Html.BeginForm(actionName: "Index",
-    controllerName: "Weapons",
+    controllerName: "Enemies",
     method: FormMethod.Get))
 {
     <button class="btn btn-warning">← List</button>
@@ -21,8 +21,6 @@
 @using (Html.BeginForm())
 {
     <div class="form-horizontal">
-
-        @Html.HiddenFor(x => x.Id)
 
         <div class="form-group">
             @Html.LabelFor(x => x.Name, new { @class = "control-label col-md-4" })
@@ -41,16 +39,8 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(x => x.WeaponArt, new { @class = "control-label col-md-4" })
-            <div class="col-md-8">
-                @Html.DropDownListFor(x => x.WeaponArtId, (SelectList)ViewBag.WeaponArts, "-Select a weapon art-", new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             <div class="col-md-offset-3 col-md-9">
-                <input type="submit" value="Update Weapon" class="btn btn-success" />
+                <input type="submit" value="Add Enemy" class="btn btn-success" />
             </div>
         </div>
 

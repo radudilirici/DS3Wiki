@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
 namespace DS3Wiki.Models
 {
-    [Table("Weapons")]
-    public class Weapon
+    public class Enemy
     {
         [Key]
         public int Id { get; set; }
@@ -20,12 +17,6 @@ namespace DS3Wiki.Models
         [Required]
         public string Description { get; set; }
 
-        [Required]
-        public int WeaponArtId { get; set; }
-
-        [ForeignKey("WeaponArtId")]
-        public WeaponArt WeaponArt { get; set; }
-
-        public virtual ICollection<Enemy> Enemies { get; set; }
+        public virtual ICollection<Weapon> Weapons { get; set; }
     }
 }

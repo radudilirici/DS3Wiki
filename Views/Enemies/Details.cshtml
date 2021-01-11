@@ -1,0 +1,33 @@
+﻿@model DS3Wiki.Models.Enemy
+
+@{
+    ViewBag.Title = "Enemy Details";
+}
+
+<h2>Enemy Details: @Model.Name</h2>
+
+<hr />
+
+@using (Html.BeginForm(actionName: "Index",
+    controllerName: "Enemies",
+    method: FormMethod.Get))
+{
+    <button class="btn btn-warning">← List</button>
+}
+
+<br />
+<br />
+
+@Html.LabelFor(x => x.Description)
+<p>@Model.Description</p>
+
+<br />
+
+<p>This enemy drops following weapons:</p>
+
+@{
+    foreach (var weapon in Model.Weapons.ToList())
+    {
+        <p>@Html.ActionLink(weapon.Name, "Details", "Weapons", new { id = weapon.Id }, null)</p>
+    }
+}

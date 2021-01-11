@@ -8,6 +8,16 @@
 
 <hr />
 
+@using (Html.BeginForm(actionName: "Index",
+    controllerName: "Users",
+    method: FormMethod.Get))
+{
+    <button class="btn btn-warning">← List</button>
+}
+
+<br />
+<br />
+
 @Html.LabelFor(x => x.Email)
 <p>@Model.Email</p>
 

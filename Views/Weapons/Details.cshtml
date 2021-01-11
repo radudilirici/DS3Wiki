@@ -4,12 +4,19 @@
     ViewBag.Title = "Weapon Details";
 }
 
-<h2>Weapon Details</h2>
+<h2>Weapon Details: @Model.Name</h2>
 
 <hr />
 
-@Html.LabelFor(x => x.Name)
-<p>@Model.Name</p>
+@using (Html.BeginForm(actionName: "Index",
+    controllerName: "Weapons",
+    method: FormMethod.Get))
+{
+    <button class="btn btn-warning">← List</button>
+}
+
+<br />
+<br />
 
 @Html.LabelFor(x => x.Description)
 <p>@Model.Description</p>
@@ -21,4 +28,10 @@
 
 <br />
 
-<p>It can be dropped from ....</p>
+<p>This weapon can be dropped from the following enemies:</p>
+@{
+    foreach (var enemy in Model.Enemies.ToList())
+    {
+        <p>@Html.ActionLink(@enemy.Name, "Details", "Enemies", new { id = enemy.Id }, null)</p>
+    }
+}

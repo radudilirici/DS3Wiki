@@ -1,0 +1,45 @@
+﻿@model DS3Wiki.Models.Enemy
+
+<hr />
+
+@Html.Label("Name", "Name: ")
+<p>@Model.Name</p>
+
+@Html.Label("Description", "Description: ")
+<p>@Model.Description</p>
+
+<br />
+
+@using (Html.BeginForm(actionName: "Details",
+    controllerName: "Enemies",
+    method: FormMethod.Get,
+    routeValues: new { id = Model.Id }))
+{
+    <button class="btn btn-info">Details</button>
+}
+
+
+@if (User.IsInRole("Contributor") || User.IsInRole("Admin"))
+{
+
+    using (Html.BeginForm(actionName: "Edit",
+        controllerName: "Enemies",
+        method: FormMethod.Get,
+        routeValues: new { id = Model.Id }))
+    {
+        <button class="btn btn-warning">Edit</button>
+    }
+}
+
+@if (User.IsInRole("Contributor") || User.IsInRole("Admin"))
+{
+
+    using (Html.BeginForm(actionName: "Delete",
+        controllerName: "Enemies",
+        method: FormMethod.Post,
+        routeValues: new { id = Model.Id }))
+    {
+        <button class="btn btn-danger">Delete</button>
+    }
+}
+

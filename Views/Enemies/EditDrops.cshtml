@@ -1,0 +1,64 @@
+﻿@model DS3Wiki.Models.Enemy
+
+@{
+    ViewBag.Title = "Edit Enemy Drops";
+}
+
+<h2>Edit Enemy Drops</h2>
+
+<hr />
+
+@using (Html.BeginForm(actionName: "Index",
+    controllerName: "Enemies",
+    method: FormMethod.Get))
+{
+    <button class="btn btn-warning">← List</button>
+}
+
+<br />
+<br />
+
+<p>This enemy drops the following weapons:</p>
+
+@foreach (var weapon in Model.Weapons.ToList())
+{
+    <p>@weapon.Name</p>
+    using (Html.BeginForm(actionName: "RemoveDrop",
+        controllerName: "Enemies",
+        method: FormMethod.Post,
+        routeValues: new { id = Model.Id, weapon_id = weapon.Id }))
+    {
+        <button class="btn btn-danger">Remove Drop</button>
+    }
+    <br />
+    <br />
+}
+
+<hr />
+
+<h5>Add Drop</h5>
+<br />
+
+@using (Html.BeginForm(actionName: "AddDrop",
+        controllerName: "Enemies",
+        method: FormMethod.Post,
+        routeValues: new { id = Model.Id, weapon_id = ViewBag.weapon_id }))
+{
+    <div class="form-horizontal">
+
+        @Html.HiddenFor(x => x.Id)
+
+        <div class="form-group">
+            <div class="col-md-8">
+                @Html.DropDownList("weapon_id", (SelectList)ViewBag.Weapons, null, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-9">
+                <input type="submit" value="Add Drop" class="btn btn-success" />
+            </div>
+        </div>
+
+    </div>
+}

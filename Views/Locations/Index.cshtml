@@ -1,0 +1,26 @@
+﻿@model List<DS3Wiki.Models.Location>
+
+@{
+    ViewBag.Title = "Locations";
+}
+
+<h2>Locations</h2>
+
+@if (User.IsInRole("Contributor") || User.IsInRole("Admin"))
+{
+    <br />
+
+    using (Html.BeginForm(actionName: "Create",
+        controllerName: "Locations",
+        method: FormMethod.Get))
+    {
+        <button class="btn btn-success">Add Location</button>
+    }
+}
+
+@{
+    foreach (var location in Model)
+    {
+        @Html.Partial("_LocationsListItem", location)
+    }
+}

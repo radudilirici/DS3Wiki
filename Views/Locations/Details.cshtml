@@ -1,0 +1,33 @@
+﻿@model DS3Wiki.Models.Location
+
+@{
+    ViewBag.Title = "Location Details";
+}
+
+<h2>Location Details: @Model.Name</h2>
+
+<hr />
+
+@using (Html.BeginForm(actionName: "Index",
+    controllerName: "Locations",
+    method: FormMethod.Get))
+{
+    <button class="btn btn-warning">← List</button>
+}
+
+<br />
+<br />
+
+@Html.LabelFor(x => x.Description)
+<p>@Model.Description</p>
+
+<br />
+
+<p>The following enemies can be found in this location:</p>
+
+@{
+    foreach (var enemy in Model.Enemies.ToList())
+    {
+        <p>@Html.ActionLink(enemy.Name, "Details", "Enemies", new { id = enemy.Id }, null)</p>
+    }
+}

@@ -31,3 +31,12 @@
         <p>@Html.ActionLink(weapon.Name, "Details", "Weapons", new { id = weapon.Id }, null)</p>
     }
 }
+
+<p>This enemy can be found in the following locations:</p>
+
+@{
+    foreach (var location in Model.Locations.ToList())
+    {
+        <p>@Html.ActionLink(location.Name, "Details", "Locations", new { id = location.Id }, null)</p>
+    }
+}

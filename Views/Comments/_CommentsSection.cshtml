@@ -1,0 +1,27 @@
+﻿<hr />
+
+@{ 
+    var TitleNoSpaces = ViewBag.Title.Replace(" ", "");
+}
+
+@using (Html.BeginForm(actionName: "Create",
+        controllerName: "Comments",
+        method: FormMethod.Post,
+        routeValues: new { category = TitleNoSpaces, email = ViewBag.Email }))
+{
+
+    @Html.TextBox("Text", null, new { @class = "form-control" })
+
+    <br />
+
+    <input type="submit" value="Add Comment" class="btn btn-warning" />
+}
+
+<hr />
+<h4>Comments:</h4>
+
+@foreach (var comment in ViewBag.Comments)
+{
+    <br />
+    <p>@comment.Email: @comment.Text</p>
+}

@@ -15,6 +15,11 @@ namespace DS3Wiki.Controllers
 
         public ActionResult Index()
         {
+            var com = wikiContext.Comments.Where(x => x.Category == "WeaponArts").ToList();
+            com.Reverse();
+            ViewBag.Comments = com;
+            ViewBag.Email = User.Identity.Name;
+
             var weaponArts = wikiContext.WeaponArts.ToList();
 
             return View(weaponArts);

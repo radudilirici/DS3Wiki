@@ -207,6 +207,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Contexts\WikiContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\EnemiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
@@ -214,6 +215,7 @@
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\WeaponArtsController.cs" />
     <Compile Include="Controllers\WeaponsController.cs" />
+    <Compile Include="CustomValidations\CommentValidation.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -241,8 +243,13 @@
     <Compile Include="Migrations\202101111802299_NewTable_Locations.Designer.cs">
       <DependentUpon>202101111802299_NewTable_Locations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101112020426_NewTable_Comments.cs" />
+    <Compile Include="Migrations\202101112020426_NewTable_Comments.Designer.cs">
+      <DependentUpon>202101112020426_NewTable_Comments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Enemy.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Location.cs" />
@@ -337,6 +344,7 @@
     <Content Include="Views\Locations\Edit.cshtml" />
     <Content Include="Views\Locations\EditEnemies.cshtml" />
     <Content Include="Views\Locations\Index.cshtml" />
+    <Content Include="Views\Comments\_CommentsSection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -372,6 +380,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101111802299_NewTable_Locations.resx">
       <DependentUpon>202101111802299_NewTable_Locations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101112020426_NewTable_Comments.resx">
+      <DependentUpon>202101112020426_NewTable_Comments.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

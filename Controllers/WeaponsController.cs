@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 
 namespace DS3Wiki.Controllers
 {
@@ -18,7 +19,28 @@ namespace DS3Wiki.Controllers
         {
             var weapons = wikiContext.Weapons.ToList();
 
+            var com = wikiContext.Comments.Where(x => x.Category == "Weapons").ToList();
+            com.Reverse();
+            ViewBag.Comments = com;
+            ViewBag.Email = User.Identity.Name;
+
             return View(weapons);
+        }
+
+        [HttpPost]
+        public ActionResult Search(string weapon_name)
+        {
+            var com = wikiContext.Comments.Where(x => x.Category == "Weapons").ToList();
+            com.Reverse();
+            ViewBag.Comments = com;
+            ViewBag.Email = User.Identity.Name;
+
+            if (weapon_name.Equals(""))
+                return View("Index", wikiContext.Weapons.ToList());
+
+            var weapons = wikiContext.Weapons.Where(x => x.Name.ToLower().Contains(weapon_name.ToLower())).ToList();
+
+            return View("Index", weapons);
         }
 
         public ActionResult Details(int id)

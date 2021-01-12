@@ -18,6 +18,11 @@ namespace DS3Wiki.Controllers
         // GET: Enemies
         public ActionResult Index()
         {
+            var com = db.Comments.Where(x => x.Category == "Enemies").ToList();
+            com.Reverse();
+            ViewBag.Comments = com;
+            ViewBag.Email = User.Identity.Name;
+
             return View(db.Enemies.ToList());
         }
 
@@ -103,19 +108,13 @@ namespace DS3Wiki.Controllers
                 return HttpNotFound();
             }
 
-            var weapons = db.Weapons.Select(x => new
-            {
-                WeaponId = x.Id,
-                WeaponName = x.Name
-            }).ToList();
-
-            ViewBag.Weapons = new SelectList(weapons, "WeaponId", "WeaponName");
+            ViewBag.WeaponId = new SelectList(db.Weapons, "Id", "Name");
 
             return View(enemy);
         }
 
         [HttpPost]
-        public ActionResult AddDrop(int? id, int? weapon_id)
+        public ActionResult AddDrop(int? id, int? weaponId)
         {
             if (id == null)
             {
@@ -128,12 +127,12 @@ namespace DS3Wiki.Controllers
                 return HttpNotFound();
             }
 
-            if (weapon_id == null)
+            if (weaponId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Weapon weapon = db.Weapons.Find(weapon_id);
+            Weapon weapon = db.Weapons.Find(weaponId);
             if (weapon == null)
             {
                 return HttpNotFound();
@@ -142,19 +141,13 @@ namespace DS3Wiki.Controllers
             enemy.Weapons.Add(weapon);
             db.SaveChanges();
 
-            var weapons = db.Weapons.Select(x => new
-            {
-                WeaponId = x.Id,
-                WeaponName = x.Name
-            }).ToList();
+            ViewBag.WeaponId = new SelectList(db.Weapons, "Id", "Name");
 
-            ViewBag.Weapons = new SelectList(weapons, "WeaponId", "WeaponName");
-
-            return RedirectToAction("EditDrops", new { id = id });
+            return View("EditDrops", enemy);
         }
 
         [HttpPost]
-        public ActionResult RemoveDrop(int? id, int? weapon_id)
+        public ActionResult RemoveDrop(int? id, int? weaponId)
         {
             if (id == null)
             {
@@ -167,12 +160,12 @@ namespace DS3Wiki.Controllers
                 return HttpNotFound();
             }
 
-            if (weapon_id == null)
+            if (weaponId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Weapon weapon = db.Weapons.Find(weapon_id);
+            Weapon weapon = db.Weapons.Find(weaponId);
             if (weapon == null)
             {
                 return HttpNotFound();
@@ -181,15 +174,9 @@ namespace DS3Wiki.Controllers
             enemy.Weapons.Remove(weapon);
             db.SaveChanges();
 
-            var weapons = db.Weapons.Select(x => new
-            {
-                WeaponId = x.Id,
-                WeaponName = x.Name
-            }).ToList();
+            ViewBag.WeaponId = new SelectList(db.Weapons, "Id", "Name");
 
-            ViewBag.Weapons = new SelectList(weapons, "WeaponId", "WeaponName");
-
-            return RedirectToAction("EditDrops", new { id = id});
+            return View("EditDrops", enemy);
         }
 
         // POST: Enemies/Delete/5

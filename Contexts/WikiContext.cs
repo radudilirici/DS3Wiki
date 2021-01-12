@@ -18,6 +18,6 @@ namespace DbTest.Contexts
         public DbSet<WeaponArt> WeaponArts { get; set; }
         public DbSet<Enemy> Enemies { get; set; }
         public DbSet<Location> Locations { get; set; }
-
+        public DbSet<Comment> Comments { get; set; }
     }
 }

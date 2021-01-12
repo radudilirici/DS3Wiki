@@ -18,6 +18,11 @@ namespace DS3Wiki.Controllers
         // GET: Locations
         public ActionResult Index()
         {
+            var com = db.Comments.Where(x => x.Category == "Locations").ToList();
+            com.Reverse();
+            ViewBag.Comments = com;
+            ViewBag.Email = User.Identity.Name;
+
             return View(db.Locations.ToList());
         }
 
@@ -101,19 +106,13 @@ namespace DS3Wiki.Controllers
                 return HttpNotFound();
             }
 
-            var enemies = db.Enemies.Select(x => new
-            {
-                EnemyId = x.Id,
-                EnemyName = x.Name
-            }).ToList();
-
-            ViewBag.Enemies = new SelectList(enemies, "EnemyId", "EnemyName");
+            ViewBag.EnemyId = new SelectList(db.Enemies, "Id", "Name");
 
             return View(location);
         }
 
         [HttpPost]
-        public ActionResult AddEnemy(int? id, int? enemy_id)
+        public ActionResult AddEnemy(int? id, int? enemyId)
         {
             if (id == null)
             {
@@ -126,12 +125,12 @@ namespace DS3Wiki.Controllers
                 return HttpNotFound();
             }
 
-            if (enemy_id == null)
+            if (enemyId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Enemy enemy = db.Enemies.Find(enemy_id);
+            Enemy enemy = db.Enemies.Find(enemyId);
             if (enemy == null)
             {
                 return HttpNotFound();
@@ -140,19 +139,13 @@ namespace DS3Wiki.Controllers
             location.Enemies.Add(enemy);
             db.SaveChanges();
 
-            var enemies = db.Enemies.Select(x => new
-            {
-                EnemyId = x.Id,
-                EnemyName = x.Name
-            }).ToList();
+            ViewBag.EnemyId = new SelectList(db.Enemies, "Id", "Name");
 
-            ViewBag.Enemies = new SelectList(enemies, "EnemyId", "EnemyName");
-
-            return RedirectToAction("EditEnemies", new { id = id });
+            return View("EditEnemies", location);
         }
 
         [HttpPost]
-        public ActionResult RemoveEnemy(int? id, int? enemy_id)
+        public ActionResult RemoveEnemy(int? id, int? enemyId)
         {
             if (id == null)
             {
@@ -165,12 +158,12 @@ namespace DS3Wiki.Controllers
                 return HttpNotFound();
             }
 
-            if (enemy_id == null)
+            if (enemyId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Enemy enemy = db.Enemies.Find(enemy_id);
+            Enemy enemy = db.Enemies.Find(enemyId);
             if (enemy == null)
             {
                 return HttpNotFound();

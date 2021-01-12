@@ -26,7 +26,7 @@
     using (Html.BeginForm(actionName: "RemoveDrop",
         controllerName: "Enemies",
         method: FormMethod.Post,
-        routeValues: new { id = Model.Id, weapon_id = weapon.Id }))
+        routeValues: new { id = Model.Id, weaponId = weapon.Id }))
     {
         <button class="btn btn-danger">Remove Drop</button>
     }
@@ -41,8 +41,7 @@
 
 @using (Html.BeginForm(actionName: "AddDrop",
         controllerName: "Enemies",
-        method: FormMethod.Post,
-        routeValues: new { id = Model.Id, weapon_id = ViewBag.weapon_id }))
+        method: FormMethod.Post))
 {
     <div class="form-horizontal">
 
@@ -50,7 +49,7 @@
 
         <div class="form-group">
             <div class="col-md-8">
-                @Html.DropDownList("weapon_id", (SelectList)ViewBag.Weapons, null, new { @class = "form-control" })
+                @Html.DropDownList("WeaponId", null, new { @class = "form-control" })
             </div>
         </div>
 
